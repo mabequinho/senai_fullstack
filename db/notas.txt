@@ -1,1 +1,2 @@
 Fiz utilizando o MariaDB + Dbeaver
+Configurei o MariaDB de acordo com https://wiki.archlinux.org/title/MariaDB
