@@ -1,0 +1,124 @@
+20240722 16:38:14,biscoito,monty,localhost,13,1771,QUERY,clinica_senai,'SET GLOBAL server_audit_file_rotate_now = ON',0
+20240722 16:38:14,biscoito,monty,localhost,13,1772,QUERY,clinica_senai,'SET GLOBAL server_audit_query_log_limit = 2147483647',0
+20240722 16:38:14,biscoito,monty,localhost,13,1773,READ,mysql,proc,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,DROP,clinica_senai,consulta,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,DROP,clinica_senai,exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,DROP,clinica_senai,medico,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,DROP,clinica_senai,paciente,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,DROP,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,proc,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,WRITE,mysql,event,
+20240722 16:38:14,biscoito,monty,localhost,13,1773,QUERY,clinica_senai,'DROP DATABASE IF EXISTS clinica_senai',0
+20240722 16:38:14,biscoito,monty,localhost,13,1774,QUERY,clinica_senai,'CREATE DATABASE clinica_senai /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */',0
+20240722 16:38:14,biscoito,monty,localhost,13,1775,QUERY,clinica_senai,'USE clinica_senai',0
+20240722 16:38:14,biscoito,monty,localhost,13,1776,CREATE,clinica_senai,paciente,
+20240722 16:38:14,biscoito,monty,localhost,13,1776,QUERY,clinica_senai,'-- mydb.paciente definition\n\nCREATE TABLE `paciente` (\n  `cpf` varchar(14) NOT NULL,\n  `nome_paciente` varchar(40) NOT NULL,\n  `telefone` varchar(14) NOT NULL,\n  `numero_plano` int(11) NOT NULL,\n  `nome_plano` varchar(20) NOT NULL,\n  `tipo_plano` varchar(10) NOT NULL,\n  PRIMARY KEY (`cpf`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',0
+20240722 16:38:14,biscoito,monty,localhost,13,1777,CREATE,clinica_senai,medico,
+20240722 16:38:14,biscoito,monty,localhost,13,1777,QUERY,clinica_senai,'-- mydb.medico definition\n\nCREATE TABLE `medico` (\n  `crm` int(11) NOT NULL,\n  `nome_medico` varchar(40) NOT NULL,\n  `especialidade` varchar(20) NOT NULL,\n  PRIMARY KEY (`crm`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',0
+20240722 16:38:14,biscoito,monty,localhost,13,1778,CREATE,clinica_senai,exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1778,QUERY,clinica_senai,'-- mydb.exame definition\n\nCREATE TABLE `exame` (\n  `codigo` int(11) NOT NULL,\n  `especificacao` varchar(20) NOT NULL,\n  `preco` decimal(10,0) NOT NULL,\n  PRIMARY KEY (`codigo`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',0
+20240722 16:38:14,biscoito,monty,localhost,13,1779,CREATE,clinica_senai,consulta,
+20240722 16:38:14,biscoito,monty,localhost,13,1779,QUERY,clinica_senai,'-- mydb.consulta definition\n\nCREATE TABLE `consulta` (\n  `numero_consulta` int(11) NOT NULL AUTO_INCREMENT,\n  `data_consulta` date NOT NULL,\n  `horario_consulta` time NOT NULL,\n  `fk_paciente_cpf` varchar(14) NOT NULL,\n  `fk_medico_crm` int(11) NOT NULL,\n  PRIMARY KEY (`numero_consulta`),\n  KEY `consulta_paciente_FK` (`fk_paciente_cpf`),\n  KEY `consulta_medico_FK` (`fk_medico_crm`),\n  CONSTRAINT `consulta_medico_FK` FOREIGN KEY (`fk_medico_crm`) REFERENCES `medico` (`crm`),\n  CONSTRAINT `consulta_paciente_FK` FOREIGN KEY (`fk_paciente_cpf`) REFERENCES `paciente` (`cpf`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',0
+20240722 16:38:14,biscoito,monty,localhost,13,1780,CREATE,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1780,QUERY,clinica_senai,'-- mydb.pedido_exame definition\n\nCREATE TABLE `pedido_exame` (\n  `numero_pedido` int(11) NOT NULL AUTO_INCREMENT,\n  `resultado` varchar(40) NOT NULL,\n  `data_exame` date NOT NULL,\n  `valor_pagar` decimal(10,0) NOT NULL,\n  `desconto` DECIMAL(10, 2) DEFAULT 0.00,\n  `fk_consulta_numero_consulta` int(11) NOT NULL,\n  `fk_exame_codigo` int(11) NOT NULL,\n  PRIMARY KEY (`numero_pedido`),\n  KEY `pedido_exame_exame_FK` (`fk_exame_codigo`),\n  KEY `pedido_exame_consulta_FK` (`fk_consulta_numero_consulta`),\n  CONSTRAINT `pedido_exame_consulta_FK` FOREIGN KEY (`fk_consulta_numero_consulta`) REFERENCES `consulta` (`numero_consulta`),\n  CONSTRAINT `pedido_exame_exame_FK` FOREIGN KEY (`fk_exame_codigo`) REFERENCES `exame` (`codigo`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',0
+20240722 16:38:14,biscoito,monty,localhost,13,1781,READ,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1781,QUERY,clinica_senai,'CREATE TRIGGER before_insert_pedido_exame\nBEFORE INSERT ON pedido_exame\nFOR EACH ROW\nBEGIN\n    DECLARE plano_tipo VARCHAR(10);\n    DECLARE desconto_aplicado DECIMAL(10, 2);\n    DECLARE preco_exame DECIMAL(10, 0);\n\n    -- Obtendo o preço do exame\n    SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo;\n\n    -- Definindo o valor a pagar como o preço do exame\n    SET NEW.valor_pagar = preco_exame;\n\n    -- Obtendo o tipo de plano do paciente\n    SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta;\n\n    -- Determinando o desconto com base no tipo de plano\n    IF plano_tipo = \'Básico\' THEN\n        SET desconto_aplicado = 0.1;\n    ELSEIF plano_tipo = \'Padrão\' THEN\n        SET desconto_aplicado = 0.3;\n    ELSEIF plano_tipo = \'Especial\' THEN\n        SET desconto_aplicado = 1;\n    ELSE\n        SET desconto_aplicado = 0.00; -- Sem desconto para outros tipos de plano\n    END IF;\n\n    -- Ajustando o valor do desconto e valor a pagar\n    SET NEW.desconto = NEW.valor_pagar * desconto_aplicado;\n    SET NEW.valor_pagar = NEW.valor_pagar * (1 - desconto_aplicado);\nEND',0
+20240722 16:38:14,biscoito,monty,localhost,13,1782,ALTER,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1782,READ,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1782,QUERY,clinica_senai,'-- Sem equivalente ao SET NOCOUNT ON no Mariadb\n-- SET NOCOUNT ON\n-- DELETE FROM pedido_exame ;\n-- equivalento Mariadb ao DBCC CHECKIDENT(\'pedido_exame\', RESEED, 2199);\nALTER TABLE pedido_exame AUTO_INCREMENT = 2199',0
+20240722 16:38:14,biscoito,monty,localhost,13,1783,WRITE,clinica_senai,paciente,
+20240722 16:38:14,biscoito,monty,localhost,13,1783,READ,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1783,READ,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1783,READ,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1783,QUERY,clinica_senai,'-- Inserir dados na tabela paciente\nINSERT INTO paciente (cpf, nome_paciente, telefone, numero_plano, nome_plano, tipo_plano) VALUES\n(\'012.345.678-90\', \'Leonardo Ribeiro\', \'(11)91234-5678\', 123456, \'Inovamed\', \'Padrão\'),\n(\'123.456.789-12\', \'Bruna Alvez\', \'(15)92345-6789\', 234567, \'Ultramed\', \'Básico\'),\n(\'234.567.890-23\', \'Gilberto Barros\', \'(11)94567-8901\', 345678, \'Inovamed\', \'Especial\'),\n(\'345.678.901-45\', \'Maria Pereira\', \'(12)95678-9012\', 456789, \'Ultramed\', \'Padrão\'),\n(\'567.890.123-45\', \'Ana Santos\', \'(21)98765-4321\', 678901, \'SaúdePlus\', \'Padrão\'),\n(\'678.901.234-56\', \'Paulo Silva\', \'(31)91234-9876\', 789012, \'SaúdeMais\', \'Básico\')',0
+20240722 16:38:14,biscoito,monty,localhost,13,1784,WRITE,clinica_senai,medico,
+20240722 16:38:14,biscoito,monty,localhost,13,1784,READ,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1784,READ,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1784,READ,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1784,QUERY,clinica_senai,'-- Inserir dados na tabela medico\nINSERT INTO medico (crm, nome_medico, especialidade) VALUES\n(102030, \'Agildo Nunes\', \'Cardiologia\'),\n(203040, \'Márcia Alvez\', \'Gastroenterologia\'),\n(304050, \'Roberto Gusmão\', \'Neurologia\'),\n(405060, \'Edna Cardoso\', \'Ortopedia\'),\n(506070, \'Ricardo Souza\', \'Otorrinolaringologia\'),\n(607080, \'Lúcia Ferreira\', \'Dermatologia\')',0
+20240722 16:38:14,biscoito,monty,localhost,13,1785,WRITE,clinica_senai,exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1785,READ,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1785,READ,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1785,READ,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1785,QUERY,clinica_senai,'-- Inserir dados na tabela exame\nINSERT INTO exame (codigo, especificacao, preco) VALUES\n(10020, \'Hemograma\', 120.00),\n(10030, \'Tomografia\', 270.00),\n(10040, \'Ultrassonografia\', 600.00),\n(10050, \'Ressonância\', 850.00),\n(10060, \'Radiografia\', 90.00),\n(10070, \'Ecocardiograma\', 150.00),\n(10080, \'Mamografia\', 200.00)',0
+20240722 16:38:14,biscoito,monty,localhost,13,1786,WRITE,clinica_senai,consulta,
+20240722 16:38:14,biscoito,monty,localhost,13,1786,READ,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1786,READ,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1786,READ,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1786,QUERY,clinica_senai,'-- Inserir dados na tabela consulta\nINSERT INTO consulta (data_consulta, horario_consulta, fk_paciente_cpf, fk_medico_crm) VALUES\n(\'2023-07-10\', \'10:30:00\', \'012.345.678-90\', 102030),\n(\'2023-07-11\', \'09:00:00\', \'123.456.789-12\', 203040),\n(\'2023-07-12\', \'11:15:00\', \'234.567.890-23\', 304050),\n(\'2023-07-13\', \'13:45:00\', \'345.678.901-45\', 405060),\n(\'2023-07-14\', \'15:30:00\', \'567.890.123-45\', 506070),\n(\'2023-07-15\', \'10:00:00\', \'678.901.234-56\', 607080)',0
+20240722 16:38:14,biscoito,monty,localhost,13,1787,WRITE,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,clinica_senai,exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,clinica_senai,consulta,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,clinica_senai,paciente,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,mysql,table_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,mysql,column_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1787,READ,mysql,index_stats,
+20240722 16:38:14,biscoito,monty,localhost,13,1790,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1792,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1801,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1803,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1811,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1813,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1823,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1825,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1834,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1836,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1845,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1847,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1856,QUERY,clinica_senai,'SELECT e.preco\n    INTO preco_exame\n    FROM exame e\n    WHERE e.codigo = NEW.fk_exame_codigo',0
+20240722 16:38:14,biscoito,monty,localhost,13,1858,QUERY,clinica_senai,'SELECT p.tipo_plano\n    INTO plano_tipo\n    FROM consulta c\n    JOIN paciente p ON c.fk_paciente_cpf = p.cpf\n    WHERE c.numero_consulta = NEW.fk_consulta_numero_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1858,QUERY,clinica_senai,'-- Inserir dados na tabela pedido_exame\nINSERT INTO pedido_exame (resultado, data_exame, fk_consulta_numero_consulta, fk_exame_codigo) VALUES\n(\'Normal\', \'2023-07-15\', 1, 10020),   -- Paciente com plano Padrão\n(\'\', \'2023-07-16\', 2, 10030),   -- Paciente com plano Básico\n(\'Normal\', \'2023-07-17\', 3, 10040),   -- Paciente com plano Especial\n(\'Alterado\', \'2023-07-18\', 4, 10050),   -- Paciente com plano Padrão\n(\'Inconsistente\', \'2023-07-19\', 5, 10060),   -- Paciente com plano Padrão\n(\'Normal\', \'2023-07-20\', 1, 10070),   -- Paciente com plano Padrão\n(\'\', \'2023-07-21\', 6, 10080)',0
+20240722 16:38:14,biscoito,monty,localhost,13,1864,READ,clinica_senai,pedido_exame,
+20240722 16:38:14,biscoito,monty,localhost,13,1864,QUERY,clinica_senai,'-- Paciente com plano Básico\n\n\n-- Consultar os dados para ver o resultado do trigger\nSELECT * FROM pedido_exame\nLIMIT 0, 200',0
+20240722 16:38:14,biscoito,monty,localhost,13,1865,WRITE,mysql,proc,
+20240722 16:38:14,biscoito,monty,localhost,13,1865,QUERY,clinica_senai,'CREATE PROCEDURE Agenda_Medicos()\nBEGIN\n    SELECT m.nome_medico, m.especialidade, m.crm, c.numero_consulta,\n    c.data_consulta, c.horario_consulta, p.nome_paciente, p.cpf,\n    p.nome_plano, p.tipo_plano\n    FROM medico AS m\n    INNER JOIN consulta AS c ON m.crm = c.fk_medico_crm\n    INNER JOIN paciente AS p ON c.fk_paciente_cpf = p.cpf\n    ORDER BY m.nome_medico, c.data_consulta;\nEND',0
+20240722 16:38:14,biscoito,monty,localhost,13,1866,READ,mysql,proc,
+20240722 16:38:14,biscoito,monty,localhost,13,1867,READ,clinica_senai,medico,
+20240722 16:38:14,biscoito,monty,localhost,13,1867,READ,clinica_senai,consulta,
+20240722 16:38:14,biscoito,monty,localhost,13,1867,READ,clinica_senai,paciente,
+20240722 16:38:14,biscoito,monty,localhost,13,1867,QUERY,clinica_senai,'SELECT m.nome_medico, m.especialidade, m.crm, c.numero_consulta,\n    c.data_consulta, c.horario_consulta, p.nome_paciente, p.cpf,\n    p.nome_plano, p.tipo_plano\n    FROM medico AS m\n    INNER JOIN consulta AS c ON m.crm = c.fk_medico_crm\n    INNER JOIN paciente AS p ON c.fk_paciente_cpf = p.cpf\n    ORDER BY m.nome_medico, c.data_consulta',0
+20240722 16:38:14,biscoito,monty,localhost,13,1867,QUERY,clinica_senai,'-- Executar a procedure\nCALL Agenda_Medicos()',0
+20240722 16:38:15,biscoito,monty,localhost,13,1868,WRITE,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1868,QUERY,clinica_senai,'CREATE PROCEDURE Resumo_Pagamentos(IN nome_pac VARCHAR(40))\nBEGIN\n    SELECT pa.nome_paciente, SUM(pe.valor_pagar) AS total_pagar\n    FROM paciente AS pa\n    INNER JOIN consulta AS c ON pa.cpf = c.fk_paciente_cpf\n    INNER JOIN pedido_exame AS pe ON c.numero_consulta = pe.fk_consulta_numero_consulta\n    WHERE pa.nome_paciente = nome_pac\n    GROUP BY pa.nome_paciente;\nEND',0
+20240722 16:38:15,biscoito,monty,localhost,13,1869,READ,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1870,READ,clinica_senai,paciente,
+20240722 16:38:15,biscoito,monty,localhost,13,1870,READ,clinica_senai,consulta,
+20240722 16:38:15,biscoito,monty,localhost,13,1870,READ,clinica_senai,pedido_exame,
+20240722 16:38:15,biscoito,monty,localhost,13,1870,QUERY,clinica_senai,'SELECT pa.nome_paciente, SUM(pe.valor_pagar) AS total_pagar\n    FROM paciente AS pa\n    INNER JOIN consulta AS c ON pa.cpf = c.fk_paciente_cpf\n    INNER JOIN pedido_exame AS pe ON c.numero_consulta = pe.fk_consulta_numero_consulta\n    WHERE pa.nome_paciente =  NAME_CONST(\'nome_pac\',_utf8mb4\'Leonardo Ribeiro\' COLLATE \'utf8mb4_unicode_ci\')\n    GROUP BY pa.nome_paciente',0
+20240722 16:38:15,biscoito,monty,localhost,13,1870,QUERY,clinica_senai,'-- Executar a procedure com parâmetro\nCALL Resumo_Pagamentos(\'Leonardo Ribeiro\')',0
+20240722 16:38:15,biscoito,monty,localhost,13,1871,WRITE,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1871,QUERY,clinica_senai,'CREATE PROCEDURE Exames_Solicitados()\nBEGIN\n    SELECT m.nome_medico, m.especialidade, m.crm, c.numero_consulta,\n           p.numero_pedido, p.data_exame, e.codigo, e.especificacao\n    FROM medico AS m\n    INNER JOIN consulta AS c ON m.crm = c.fk_medico_crm\n    INNER JOIN pedido_exame AS p ON c.numero_consulta = p.fk_consulta_numero_consulta\n    INNER JOIN exame AS e ON p.fk_exame_codigo = e.codigo\n    ORDER BY m.nome_medico, p.data_exame;\nEND',0
+20240722 16:38:15,biscoito,monty,localhost,13,1872,READ,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1873,READ,clinica_senai,medico,
+20240722 16:38:15,biscoito,monty,localhost,13,1873,READ,clinica_senai,consulta,
+20240722 16:38:15,biscoito,monty,localhost,13,1873,READ,clinica_senai,pedido_exame,
+20240722 16:38:15,biscoito,monty,localhost,13,1873,READ,clinica_senai,exame,
+20240722 16:38:15,biscoito,monty,localhost,13,1873,QUERY,clinica_senai,'SELECT m.nome_medico, m.especialidade, m.crm, c.numero_consulta,\n           p.numero_pedido, p.data_exame, e.codigo, e.especificacao\n    FROM medico AS m\n    INNER JOIN consulta AS c ON m.crm = c.fk_medico_crm\n    INNER JOIN pedido_exame AS p ON c.numero_consulta = p.fk_consulta_numero_consulta\n    INNER JOIN exame AS e ON p.fk_exame_codigo = e.codigo\n    ORDER BY m.nome_medico, p.data_exame',0
+20240722 16:38:15,biscoito,monty,localhost,13,1873,QUERY,clinica_senai,'-- Executar a procedure\nCALL Exames_Solicitados()',0
+20240722 16:38:15,biscoito,monty,localhost,13,1874,WRITE,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1874,QUERY,clinica_senai,'CREATE PROCEDURE Historico_Pagamentos()\nBEGIN\n    SELECT pa.nome_paciente, pa.cpf, c.numero_consulta,\n           c.data_consulta, pe.data_exame, pe.valor_pagar,\n           e.codigo, e.especificacao\n    FROM paciente AS pa\n    INNER JOIN consulta AS c ON pa.cpf = c.fk_paciente_cpf\n    INNER JOIN pedido_exame AS pe ON c.numero_consulta = pe.fk_consulta_numero_consulta\n    INNER JOIN exame AS e ON pe.fk_exame_codigo = e.codigo\n    ORDER BY pa.nome_paciente, pe.data_exame;\nEND',0
+20240722 16:38:15,biscoito,monty,localhost,13,1875,READ,mysql,proc,
+20240722 16:38:15,biscoito,monty,localhost,13,1876,READ,clinica_senai,paciente,
+20240722 16:38:15,biscoito,monty,localhost,13,1876,READ,clinica_senai,consulta,
+20240722 16:38:15,biscoito,monty,localhost,13,1876,READ,clinica_senai,pedido_exame,
+20240722 16:38:15,biscoito,monty,localhost,13,1876,READ,clinica_senai,exame,
+20240722 16:38:15,biscoito,monty,localhost,13,1876,QUERY,clinica_senai,'SELECT pa.nome_paciente, pa.cpf, c.numero_consulta,\n           c.data_consulta, pe.data_exame, pe.valor_pagar,\n           e.codigo, e.especificacao\n    FROM paciente AS pa\n    INNER JOIN consulta AS c ON pa.cpf = c.fk_paciente_cpf\n    INNER JOIN pedido_exame AS pe ON c.numero_consulta = pe.fk_consulta_numero_consulta\n    INNER JOIN exame AS e ON pe.fk_exame_codigo = e.codigo\n    ORDER BY pa.nome_paciente, pe.data_exame',0
+20240722 16:38:15,biscoito,monty,localhost,13,1876,QUERY,clinica_senai,'-- Executar a procedure\nCALL Historico_Pagamentos()',0
+20240722 16:38:16,biscoito,monty,localhost,13,1877,QUERY,clinica_senai,'SELECT DATABASE()',0
+20240722 16:38:27,biscoito,monty,localhost,13,1878,QUERY,clinica_senai,'SHOW VARIABLES LIKE \'server_audit%\'',0
+20240722 16:38:27,biscoito,monty,localhost,13,1879,QUERY,clinica_senai,'SELECT DATABASE()',0
