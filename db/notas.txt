@@ -1,2 +1,6 @@
 Fiz utilizando o MariaDB + Dbeaver
 Configurei o MariaDB de acordo com https://wiki.archlinux.org/title/MariaDB
+
+Configurei o plugin de acordo com https://mariadb.com/kb/en/mariadb-audit-plugin
+
+Deixei tudo em um unico arquive para rodar de uma vez e so adicionei as confs de auditoria no inicio do script da tarefa anterior.
