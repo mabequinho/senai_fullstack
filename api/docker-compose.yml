@@ -6,10 +6,11 @@ services:
       MYSQL_ROOT_PASSWORD: nopass
       MYSQL_USER: lu
       MYSQL_PASSWORD: nopass
+      MYSQL_DATABASE: ExoApi
     user: "${UID}:${GID}"
     volumes:
       - ./datadir:/var/lib/mysql:Z
-      - ./script_mariadb.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./initdb.d:/docker-entrypoint-initdb.d:Z
     ports:
       - "3306:3306"
 
