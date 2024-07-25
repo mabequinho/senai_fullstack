@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    image: mariadb:lts
+    container_name: mariadb_senai
+    environment:
+      MYSQL_ROOT_PASSWORD: nopass
+      MYSQL_USER: lu
+      MYSQL_PASSWORD: nopass
+    user: "${UID}:${GID}"
+    volumes:
+      - ./datadir:/var/lib/mysql:Z
+      - ./script_mariadb.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+
