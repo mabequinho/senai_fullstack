@@ -4,6 +4,7 @@ import { MenuComponent } from "./menu/menu.component";
 import { InicioComponent } from "./inicio/inicio.component";
 import { GridprodutosComponent } from "./gridprodutos/gridprodutos.component";
 import { LoginComponent } from "./login/login.component";
+import { RodapeComponent } from "./rodape/rodape.component";
 
 @Component({
   selector: "app-root",
@@ -14,6 +15,7 @@ import { LoginComponent } from "./login/login.component";
     InicioComponent,
     GridprodutosComponent,
     LoginComponent,
+    RodapeComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",

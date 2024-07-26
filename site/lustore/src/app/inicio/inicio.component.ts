@@ -3,11 +3,12 @@ import {
   NgbCarouselModule,
   NgbCarouselConfig,
 } from "@ng-bootstrap/ng-bootstrap";
+import { GridprodutosComponent } from "../gridprodutos/gridprodutos.component";
 
 @Component({
   selector: "app-inicio",
   standalone: true,
-  imports: [NgbCarouselModule],
+  imports: [NgbCarouselModule, GridprodutosComponent],
   templateUrl: "./inicio.component.html",
   styleUrl: "./inicio.component.css",
   providers: [NgbCarouselConfig], // add NgbCarouselConfig to the component providers
