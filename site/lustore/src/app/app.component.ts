@@ -3,6 +3,7 @@ import { RouterOutlet } from "@angular/router";
 import { MenuComponent } from "./menu/menu.component";
 import { InicioComponent } from "./inicio/inicio.component";
 import { GridprodutosComponent } from "./gridprodutos/gridprodutos.component";
+import { LoginComponent } from "./login/login.component";
 
 @Component({
   selector: "app-root",
@@ -12,6 +13,7 @@ import { GridprodutosComponent } from "./gridprodutos/gridprodutos.component";
     MenuComponent,
     InicioComponent,
     GridprodutosComponent,
+    LoginComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
