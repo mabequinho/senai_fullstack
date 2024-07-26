@@ -1,0 +1,9 @@
+main {
+    min-height: 500px;
+}
+#section-banner {
+    min-height: 400px;
+}
+#section-banner img {
+    height: 500px;
+}

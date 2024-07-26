@@ -9,5 +9,9 @@ import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
   styleUrl: "./inicio.component.css",
 })
 export class InicioComponent {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [
+    "/assets/img/img_02.webp",
+    "/assets/img/img_05.webp",
+    "/assets/img/img_07.webp",
+  ];
 }
