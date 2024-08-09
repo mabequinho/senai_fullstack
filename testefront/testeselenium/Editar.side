@@ -1,0 +1,105 @@
+{
+  "id": "509baffb-d359-417a-877f-313723ba37a6",
+  "version": "2.0",
+  "name": "Editar",
+  "url": "http://127.0.0.1:8081",
+  "tests": [{
+    "id": "f4717620-eee7-4e24-a01f-0eb1b7927819",
+    "name": "Editar",
+    "commands": [{
+      "id": "f35ca378-7ff6-4113-90e0-2c2e1608c342",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8081",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "360ce4e7-5129-453d-92ce-d32b50b16267",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1707x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "94dc2756-917b-457a-9b2d-24991761b303",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cdk-focused > .mdc-button__label",
+      "targets": [
+        ["css=.cdk-focused > .mdc-button__label", "css:finder"],
+        ["xpath=//tr[2]/td[3]/a/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "43a06dc1-be18-47e3-bab7-953cb5d0bfde",
+      "comment": "",
+      "command": "click",
+      "target": "name=endereco",
+      "targets": [
+        ["name=endereco", "name"],
+        ["css=div:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//input[@name='endereco']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d46cb9a-2d50-4d23-bf2b-a9f13db92a34",
+      "comment": "",
+      "command": "click",
+      "target": "name=endereco",
+      "targets": [
+        ["name=endereco", "name"],
+        ["css=div:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//input[@name='endereco']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdcbe419-c446-4c66-a31d-c87d88174b3d",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "name=endereco",
+      "targets": [
+        ["name=endereco", "name"],
+        ["css=div:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//input[@name='endereco']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "377a8d04-924b-4fc4-80c6-f6ce75d407b4",
+      "comment": "",
+      "command": "type",
+      "target": "name=endereco",
+      "targets": [
+        ["name=endereco", "name"],
+        ["css=div > .ng-dirty", "css:finder"],
+        ["xpath=//input[@name='endereco']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Rua quatorze"
+    }, {
+      "id": "dcfeab76-4209-42f9-a83c-55a77064c6f4",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=endereco",
+      "targets": [
+        ["name=endereco", "name"],
+        ["css=div > .ng-dirty", "css:finder"],
+        ["xpath=//input[@name='endereco']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }],
+  "suites": [{
+    "id": "d061a309-70db-4106-b9d3-7bcf7b04055a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f4717620-eee7-4e24-a01f-0eb1b7927819"]
+  }],
+  "urls": ["http://127.0.0.1:8081/"],
+  "plugins": []
+}
